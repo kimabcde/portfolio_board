@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member.board.dao.CommDao">
+	
+	<insert id="insertComm" parameterType="member.board.dto.CommDto">
+		insert into comm values(c_seq.nextval, #{id}, #{content}, sysdate, #{no})
+	</insert>
+	<delete id="deleteComm" parameterType="int">
+		delete from comm where cno = #{cno}
+	</delete>
+	<select id="selectComm" parameterType="int" 
+	resultType="member.board.dto.CommDto">
+		select * from comm where no = #{no} order by regdate desc
+	</select>
+</mapper>

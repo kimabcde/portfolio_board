@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member.board.dao.MemDao">
+
+<insert parameterType="member.board.dto.MemDto" id="insertMem"> 
+insert into mem values(#{id},#{password}, #{name}, #{birth}, #{address})
+</insert>
+
+<update parameterType="member.board.dto.MemDto" id="updateMem"> 
+update mem set password=#{password}, name=#{name}, birth = #{birth},address=#{address} where id=#{id} 
+</update>
+
+<delete parameterType="String" id="deleteMem"> 
+delete from mem where id = #{id} 
+</delete>
+
+<select parameterType="String" id="idCheck" resultType="String"> 
+select id from mem where id =#{id} 
+</select>
+
+<select parameterType="member.board.dto.MemDto" id="login" resultType="member.board.dto.MemDto"> 
+select * from mem where id=#{id} and password=#{password} 
+</select>
+
+</mapper>
